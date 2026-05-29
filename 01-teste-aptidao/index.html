@@ -7,6 +7,7 @@
   <title>Teste de Aptidão</title>
   <link rel="stylesheet" href="style.css" />
   <script src="./app.js" defer></script>
+
 </head>
 
 <body>
@@ -22,19 +23,20 @@
       </p>
 
       <label>Tempo (s)</label>
-      <input type="number" placeholder="Ex: 13.8" />
 
-      <button onclick="avaliar()">Avaliar</button>
+<input
+    type="number"
+    placeholder="Ex: 13.8"
+    id="tempo"
+/>
 
-      <div class="resultado">
-        O resultado aparecerá aqui
-      </div>
-    </div>
-  </main>
+<button onclick="avaliar()">
+    Avaliar
+</button>
 
-  <footer>
-    <p>Prof. Fernando Leonid</p>
-  </footer>
-</body>
-
-</html>
+<div
+    class="resultado"
+    id="resultado"
+>
+    O resultado aparecerá aqui
+</div>

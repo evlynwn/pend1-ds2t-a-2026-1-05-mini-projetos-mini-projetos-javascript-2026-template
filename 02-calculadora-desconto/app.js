@@ -1,41 +1,48 @@
 'use strict'
 
-const calcularValorEconomizado = (preco,desconto) => {
-    return preco * desconto /100
+function removerClasses() {
+    const resultado = document.getElementById('resultado')
+    resultado.classList.remove('verde', 'amarelo', 'vermelho')
 }
 
-const calcularPrecoFinal = (preco, valorEconomizado) => {
-    let precofinal = preco - valorEconomizado
-    return precofinal
+function calcularValorEconomizado(preco, desconto) {
+    return preco * (desconto / 100)
 }
 
+function calcularPrecoFinal(preco, valorEconomizado) {
+    return preco - valorEconomizado
+}
 
-function selecionarCor (desconto){
-    if (desconto <= 5){
-            return 'descconto1'
-    }else if(desconto <= 10){
-        return 'desconto2'
-    }else{
-        return 'desconto3'
+function selecionarCor(desconto) {
+    if (desconto <= 5) {
+        return 'verde'
+    } else if (desconto <= 10) {
+        return 'amarelo'
+    } else {
+        return 'vermelho'
     }
 }
-function limparClasses(){
-    document.getElementById('resultado')
-        .classList.remove('desconto1','desconto2','desconto3')
-}
 
+function handleClick() {
 
-function handleClick(){
-    const preco =Number( document.getElementById('preco').value)
+    const preco = Number(document.getElementById('preco').value)
+
     const desconto = Number(document.getElementById('desconto').value)
+
     const resultado = document.getElementById('resultado')
 
-    const valorEconomizado = calcularValorEconomizado(preco, desconto)
-    const precoFinal = calcularPrecoFinal(preco,valorEconomizado)
+    const valorEconomizado =
+        calcularValorEconomizado(preco, desconto)
+
+    const precoFinal =
+        calcularPrecoFinal(preco, valorEconomizado)
+
     const cor = selecionarCor(desconto)
 
-    resultado.textContent = `${valorEconomizado} - ${precoFinal}`
-    
+    removerClasses()
+
+    resultado.textContent =
+        `Economizou R$ ${valorEconomizado.toFixed(2)} | Preço final: R$ ${precoFinal.toFixed(2)}`
+
     resultado.classList.add(cor)
 }
-

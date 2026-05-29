@@ -1,24 +1,50 @@
 'use strict'
-const CalcularMedia = (nota1,nota2,nota3) => {
-    return (nota1 + nota2 + nota3) / 4
+
+function removerClasses() {
+
+    const resultado =
+        document.getElementById('resultado')
+
+    resultado.classList.remove(
+        'aprovado',
+        'recuperacao',
+        'reprovado'
+    )
 }
 
+function calcularMedia() {
 
-function classificarResultado (){
-    if (nota1,nota2,nota3 <= 5){
-        return "Reprovado"
-    }else if(nota1, nota2, nota3 => 7){
-        return"Aprovado"
+    const nota1 =
+        Number(document.getElementById('nota1').value)
+
+    const nota2 =
+        Number(document.getElementById('nota2').value)
+
+    const nota3 =
+        Number(document.getElementById('nota3').value)
+
+    const media =
+        (nota1 + nota2 + nota3) / 3
+
+    const resultado =
+        document.getElementById('resultado')
+
+    removerClasses()
+    if (media >= 7) {
+        resultado.textContent =
+            `Média: ${media.toFixed(1)} - Aprovado`
+
+        resultado.classList.add('aprovado')
+
+    } else if (media >= 5) {
+        resultado.textContent =
+            `Média: ${media.toFixed(1)} - Recuperação`
+
+        resultado.classList.add('recuperacao')
+    } else {
+        resultado.textContent =
+            `Média: ${media.toFixed(1)} - Reprovado`
+
+        resultado.classList.add('reprovado')
     }
-}
-function limparClasses(){
-    document.getElementById('resultado')
-        .classList.remove(nota1,nota2,nota3)
-}
-function handleClick(){
-    const nota1 = Number(document.getElementById('nota1').value)
-    const nota2 = Number(document.getElementById('nota2').value)
-    const nota3 = Number(document.getElementById('nota3').value)
-
-    const resultado = document.getElementById('resultado')
 }
